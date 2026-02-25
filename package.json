@@ -1,0 +1,52 @@
+{
+  "name": "djd-agent-score-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for DJD Agent Score — reputation scoring API for AI agent wallets on Base",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "djd-agent-score-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "reputation",
+    "wallet-scoring",
+    "base",
+    "blockchain",
+    "x402"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "Drew Jacobs <drewjacobs32@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewjacobs32/djd-agent-score-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "express": "^4.21.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
