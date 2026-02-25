@@ -2,6 +2,9 @@
 
 MCP server for **DJD Agent Score** — a reputation scoring API for AI agent wallets on Base.
 
+[![Listed in the Coinbase x402 Ecosystem](https://img.shields.io/badge/Coinbase_x402-Ecosystem-0052FF?style=flat&logo=coinbase)](https://github.com/coinbase/x402)
+[![npm version](https://img.shields.io/npm/v/djd-agent-score-mcp)](https://www.npmjs.com/package/djd-agent-score-mcp)
+
 This server exposes the DJD Agent Score REST API as [Model Context Protocol](https://modelcontextprotocol.io/) tools, so any MCP-compatible agent (Claude, GPT, Gemini, LangChain, etc.) can call scoring endpoints natively.
 
 ## Tools
