@@ -36,7 +36,7 @@
   "author": "Drew Jacobs <drewjacobs32@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drewjacobs32/djd-agent-score-mcp.git"
+    "url": "git+https://github.com/jacobsd32-cpu/djd-agent-score-mcp.git"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.1",
