@@ -70,6 +70,17 @@ async function runHttp(): Promise<void> {
 
 // ── Entrypoint ──────────────────────────────────────────────────────
 
+// ── Smithery sandbox (tool scanning during publish) ─────────────
+
+export function createSandboxServer(): McpServer {
+  const sandbox = new McpServer({
+    name: "djd-agent-score-mcp-server",
+    version: "1.0.0",
+  });
+  registerTools(sandbox);
+  return sandbox;
+}
+
 if (TRANSPORT === "http") {
   runHttp().catch((error) => {
     console.error("Server error:", error);
