@@ -1,0 +1,25 @@
+# Smithery configuration for djd-agent-score-mcp
+# https://smithery.ai/docs/build/project-config/smithery-yaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      baseUrl:
+        type: string
+        default: "https://djd-agent-score.fly.dev"
+        description: "Base URL for the DJD Agent Score API (defaults to production)"
+      timeoutMs:
+        type: number
+        default: 10000
+        description: "Request timeout in milliseconds"
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 'djd-agent-score-mcp'],
+      env: {
+        ...(config.baseUrl ? { DJD_BASE_URL: config.baseUrl } : {}),
+        ...(config.timeoutMs ? { DJD_TIMEOUT_MS: String(config.timeoutMs) } : {})
+      }
+    })
