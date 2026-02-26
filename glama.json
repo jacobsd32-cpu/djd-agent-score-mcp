@@ -1,0 +1,14 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "djd-agent-score-mcp",
+  "display_name": "DJD Agent Score",
+  "description": "Reputation scoring for AI agent wallets on Base. Trust scores, fraud checks, x402 payment verification.",
+  "repository": "https://github.com/jacobsd32-cpu/djd-agent-score-mcp",
+  "maintainers": [
+    {
+      "name": "Drew Jacobs",
+      "email": "drewjacobs32@gmail.com",
+      "url": "https://github.com/jacobsd32-cpu"
+    }
+  ]
+}

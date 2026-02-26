@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+*.md
+LICENSE
+smithery.yaml
+server.json
+glama.json
