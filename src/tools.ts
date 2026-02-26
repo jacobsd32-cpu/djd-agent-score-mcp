@@ -47,7 +47,7 @@ export function registerTools(server: McpServer): void {
       description: `Get the basic reputation score for an AI agent wallet on Base.
 
 Returns a numeric score (0-1000), tier (e.g. "Trusted", "Neutral", "Risky"),
-confidence level, recommendation text, and model version.
+confidence level, recommendation text, model version, and freshness info.
 
 This is a FREE endpoint — no x402 payment required.
 
@@ -55,7 +55,8 @@ Args:
   - wallet (string): Ethereum wallet address (0x + 40 hex chars)
 
 Returns:
-  { score, tier, confidence, recommendation, modelVersion }
+  { wallet, score, tier, confidence, recommendation, modelVersion,
+    lastUpdated, computedAt, scoreFreshness }
 
 Examples:
   - "What's the reputation of 0xABC...?" -> score_basic with that wallet
@@ -88,10 +89,18 @@ Examples:
       title: "Full Agent Score",
       description: `Get the full reputation score with dimension breakdown for an AI agent wallet.
 
-Returns everything from basic score PLUS:
-  - dimensions: { reliability, viability, identity, capability }
-  - integrityFlags: flags about suspicious activity
-  - dataQuality: metrics about data completeness
+Returns everything from basic score PLUS per-dimension scores and rich data:
+  - dimensions.reliability: { score, data: { txCount, nonce, successRate, ... } }
+  - dimensions.viability:   { score, data: { usdcBalance, ethBalance, inflows30d, ... } }
+  - dimensions.identity:    { score, data: { hasBasename, insumerVerified, walletAgeDays, ... } }
+  - dimensions.capability:  { score, data: { activeX402Services, totalRevenue, ... } }
+  - sybilFlag, gamingIndicators, dataAvailability
+  - improvementPath (actionable steps to raise the score)
+  - scoreHistory (historical score trend)
+
+The identity dimension includes "insumerVerified" (v2.3+) which indicates
+whether the wallet holds qualifying tokens verified via the Insumer
+attestation API, contributing up to 15 points toward the identity score.
 
 PAID endpoint — requires x402 payment ($0.10 USD). If your agent framework
 supports x402, the 402 response will contain payment instructions. Complete
@@ -101,8 +110,9 @@ Args:
   - wallet (string): Ethereum wallet address (0x + 40 hex chars)
 
 Returns:
-  { score, tier, confidence, recommendation, modelVersion,
-    dimensions, integrityFlags, dataQuality }`,
+  { wallet, score, tier, confidence, recommendation, modelVersion,
+    lastUpdated, computedAt, scoreFreshness, sybilFlag, gamingIndicators,
+    dimensions, dataAvailability, improvementPath, scoreHistory }`,
       inputSchema: { wallet: WalletSchema },
       annotations: {
         readOnlyHint: true,

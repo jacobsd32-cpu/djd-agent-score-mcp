@@ -30,7 +30,7 @@ setConfig({ baseUrl: BASE_URL, timeoutMs: TIMEOUT_MS });
 
 const server = new McpServer({
   name: "djd-agent-score-mcp-server",
-  version: "1.0.0",
+  version: "1.1.0",
 });
 
 registerTools(server);
@@ -75,7 +75,7 @@ async function runHttp(): Promise<void> {
 export function createSandboxServer(): McpServer {
   const sandbox = new McpServer({
     name: "djd-agent-score-mcp-server",
-    version: "1.0.0",
+    version: "1.1.0",
   });
   registerTools(sandbox);
   return sandbox;

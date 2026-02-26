@@ -1,6 +1,6 @@
 {
   "name": "djd-agent-score-mcp",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "mcpName": "io.github.jacobsd32-cpu/djd-agent-score",
   "description": "MCP server for DJD Agent Score — reputation scoring API for AI agent wallets on Base",
   "type": "module",
