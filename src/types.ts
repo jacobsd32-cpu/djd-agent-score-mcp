@@ -126,7 +126,8 @@ export interface BlacklistResponse {
   reportCount?: number;
   reports?: Array<{
     reportId: string;
-    txHashes: string[];
+    reason?: string;
+    txHashes?: string[];
     createdAt: string;
   }>;
 }
@@ -140,7 +141,7 @@ export interface LeaderboardEntry {
 }
 
 export interface LeaderboardResponse {
-  entries: LeaderboardEntry[];
+  leaderboard: LeaderboardEntry[];
 }
 
 // --- Agent Registration ---
