@@ -305,9 +305,14 @@ Returns a ranked list of wallets with their scores and tiers.
 
 This is a FREE endpoint.
 
+Args:
+  - limit (number, optional): Maximum number of entries to return (1-100)
+
 Returns:
   Array of { wallet, score, tier }`,
-      inputSchema: {},
+      inputSchema: {
+        limit: z.number().int().positive().max(100).optional().describe("Maximum number of leaderboard entries to return (1-100)"),
+      },
       annotations: {
         readOnlyHint: true,
         destructiveHint: false,
@@ -315,12 +320,16 @@ Returns:
         openWorldHint: true,
       },
     },
-    async () => {
+    async ({ limit }) => {
       try {
-        const data = await apiRequest<LeaderboardEntry[] | { entries: LeaderboardEntry[] }>({
+        const params: Record<string, string> = {};
+        if (limit != null) params.limit = String(limit);
+        const data = await apiRequest<{ leaderboard: LeaderboardEntry[] }>({
           path: "/v1/leaderboard",
+          params: Object.keys(params).length > 0 ? params : undefined,
         });
-        return ok(JSON.stringify(data, null, 2));
+        const entries = data.leaderboard ?? [];
+        return ok(JSON.stringify(entries, null, 2));
       } catch (error) {
         return err(error);
       }
