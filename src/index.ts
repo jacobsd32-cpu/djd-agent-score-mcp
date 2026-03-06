@@ -60,7 +60,7 @@ async function runHttp(): Promise<void> {
   });
 
   app.get("/health", (_req, res) => {
-    res.json({ status: "ok", server: "djd-agent-score-mcp-server", version: "1.0.0" });
+    res.json({ status: "ok", server: "djd-agent-score-mcp-server", version: "1.1.0" });
   });
 
   app.listen(PORT, () => {
