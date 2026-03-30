@@ -33,6 +33,10 @@ Or run directly with npx:
 npx djd-agent-score-mcp
 ```
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/jacobsd32-cpu-djd-agent-score-mcp).
+
 ## Configuration
 
 ### Claude Desktop
